@@ -55,7 +55,7 @@ class Offers(models.Model):
 
 class Product(models.Model):
     Category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    create_time = models.DateTimeField(auto_now_add=True,null=True)
+    create_time = models.DateTimeField(auto_now_add=True, null=True)
     brands = models.ManyToManyField(Brand, related_name='products')
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
