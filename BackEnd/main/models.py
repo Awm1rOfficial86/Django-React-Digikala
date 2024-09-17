@@ -22,6 +22,7 @@ class Slide(models.Model):
     name = models.CharField(max_length=100)
     url = models.URLField(max_length=200)
     image = models.ImageField(upload_to='slide/')
+    create_time = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.name
@@ -31,6 +32,7 @@ class Digikala_Services(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='service/')
     url = models.URLField(max_length=200)
+    create_time = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.name

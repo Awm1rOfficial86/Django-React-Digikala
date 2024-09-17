@@ -9,4 +9,3 @@ admin.site.register(Digikala_Services)
 admin.site.register(Guarantees)
 admin.site.register(Offers)
 admin.site.register(Product)
-
