@@ -19,6 +19,13 @@ class ProductList(APIView):
         return Response(serializer.data)
 
 
+class BestProduct(APIView):
+    @staticmethod
+    def get(request):
+        queryset = Product.objects.all().order_by('-buy_count')
+        serializer = ProductSerializer(queryset, many=True)
+        return Response(serializer.data)
+
 class SlideList(APIView):
     @staticmethod
     def get(request):
