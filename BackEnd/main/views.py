@@ -25,3 +25,11 @@ class DigiServiceList(APIView):
         queryset = Digikala_Services.objects.all().order_by('-create_time')
         serializer = DigiServiceSerializer(queryset, many=True)
         return Response(serializer.data)
+
+
+class OfferPackList(APIView):
+    @staticmethod
+    def get(request):
+        queryset = OfferPack.objects.all()
+        serializer = OfferPackSerializer(queryset, many=True)
+        return Response(serializer.data)

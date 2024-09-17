@@ -18,3 +18,9 @@ class DigiServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Slide
         fields = ['name', 'url', 'image']
+
+
+class OfferPackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OfferPack
+        fields = '__all__'

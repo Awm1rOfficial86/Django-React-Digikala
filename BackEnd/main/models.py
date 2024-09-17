@@ -46,7 +46,7 @@ class Guarantees(models.Model):
         return self.name
 
 
-class Offers(models.Model):
+class OfferPack(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='offer/')
     url = models.URLField(max_length=200)
