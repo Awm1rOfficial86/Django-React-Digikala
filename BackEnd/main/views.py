@@ -3,6 +3,14 @@ from rest_framework.views import APIView
 from .serializers import *
 
 
+class CategoryList(APIView):
+    @staticmethod
+    def get(request):
+        queryset = Category.objects.all()
+        serializer = CategorySerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
 class ProductList(APIView):
     @staticmethod
     def get(request):

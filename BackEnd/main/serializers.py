@@ -24,3 +24,9 @@ class OfferPackSerializer(serializers.ModelSerializer):
     class Meta:
         model = OfferPack
         fields = '__all__'
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
