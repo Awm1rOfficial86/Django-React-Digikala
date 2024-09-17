@@ -8,4 +8,5 @@ urlpatterns = [
     path('service/', DigiServiceList.as_view(), name='digi_service'),
     path('offerspack/', OfferPackList.as_view(), name='offers'),
     path('category/', CategoryList.as_view(), name='category'),
+    path('news/', NewsList.as_view(), name='news'),
 ]

@@ -26,6 +26,7 @@ class BestProduct(APIView):
         serializer = ProductSerializer(queryset, many=True)
         return Response(serializer.data)
 
+
 class SlideList(APIView):
     @staticmethod
     def get(request):
@@ -47,4 +48,12 @@ class OfferPackList(APIView):
     def get(request):
         queryset = OfferPack.objects.all()
         serializer = OfferPackSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+class NewsList(APIView):
+    @staticmethod
+    def get(request):
+        queryset = News.objects.all().order_by('-create_time')
+        serializer = NewsSerializer(queryset, many=True)
         return Response(serializer.data)
