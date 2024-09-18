@@ -18,6 +18,11 @@ class Brand(models.Model):
         return self.name
 
 
+class Guarantee(models.Model):
+    name = models.CharField(max_length=100)
+    month = models.IntegerField(default=10, validators=[MinValueValidator(1), MaxValueValidator(12)])
+
+
 class Slide(models.Model):
     name = models.CharField(max_length=100)
     url = models.URLField(max_length=200)
@@ -55,12 +60,27 @@ class OfferPack(models.Model):
         return self.name
 
 
+class insurance(models.Model):
+    Name = models.CharField(max_length=20, null=True, blank=True)
+    Price = models.IntegerField(default=0)
+    Offer = models.BooleanField(default=False)
+    OfferPrice = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.Name
+
+
 class Product(models.Model):
     Category = models.ForeignKey(Category, on_delete=models.CASCADE)
     create_time = models.DateTimeField(auto_now_add=True, null=True)
     brands = models.ManyToManyField(Brand, related_name='products')
+    insurance = models.ForeignKey(insurance, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=100)
+    en_name = models.CharField(max_length=100, null=True)
     description = models.TextField(max_length=500)
+    send = models.BooleanField(default=False)
+    send_price = models.IntegerField(default=0, null=True, blank=True)
+    send_location = models.CharField(max_length=100, null=True)
     price = models.IntegerField()
     offer_status = models.BooleanField(default=False)
     offer_price = models.IntegerField(null=True, blank=True)

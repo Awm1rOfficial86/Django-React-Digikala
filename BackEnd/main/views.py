@@ -63,9 +63,16 @@ class NewsList(APIView):
 
 class ProductColor(APIView):
     @staticmethod
-    def get(request, pk):
-        queryset = Color.objects.filter(Product=pk)
-        serializer = ColorSerializer(queryset, many=True)
+    def get_object(pk):
+        try:
+            data = Color.objects.get(pk=pk)
+        except Color.DoesNotExist:
+            raise Http404
+        return data
+
+    def get(self, request, pk):
+        queryset = self.get_object(pk)
+        serializer = ColorSerializer(queryset)
         return Response(serializer.data)
 
 
@@ -73,10 +80,10 @@ class SelectProduct(APIView):
     @staticmethod
     def get_object(pk):
         try:
-            post = Product.objects.get(pk=pk)
+            data = Product.objects.get(pk=pk)
         except Product.DoesNotExist:
             raise Http404
-        return post
+        return data
 
     def get(self, request, pk):
         queryset = self.get_object(pk)
