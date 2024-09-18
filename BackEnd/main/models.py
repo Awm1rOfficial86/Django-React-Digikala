@@ -71,6 +71,15 @@ class Product(models.Model):
         return self.name
 
 
+class Color(models.Model):
+    name = models.CharField(max_length=100)
+    HexColor = models.IntegerField()
+    Product = models.ForeignKey(Product, default=1, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
 class Comment(models.Model):
     Product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100)

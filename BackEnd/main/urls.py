@@ -9,4 +9,6 @@ urlpatterns = [
     path('offerspack/', OfferPackList.as_view(), name='offers'),
     path('category/', CategoryList.as_view(), name='category'),
     path('news/', NewsList.as_view(), name='news'),
+    path('productcolor/<int:pk>', ProductColor.as_view(), name='product_color'),
+    path('selectproduct/<int:pk>', SelectProduct.as_view(), name='product_color'),
 ]
